@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>坎巴拉计算页</title>
+<style type="text/css">
+.div-inline{ display: inline; }
+</style>
+</head>
+<body>
+
+<form action="" method="POST">
+<fieldset>
+<legend>坎巴拉火箭计算表单:</legend>
+
+<div>
+满油重量：<br>
+<input type="text" name="fullheavy" value="{{ fullheavy }}">
+</div>
+
+<div>
+空油重量：<br>
+<input type="text" name="emptyheavy" value="{{emptyheavy}}">
+</div>
+<br>
+
+<div class="div-inline">
+	单个推力：
+	<input type="text" name="thrust" value="{{thrust}}">
+</div>
+<div class="div-inline"> X </div>
+<div class="div-inline">
+	<!--select name = 'num'>
+	<option value="1">1</option>
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	<option value="5">5</option>
+	<option value="6">6</option>
+	<option value="7">7</option>
+	<option value="8">8</option>
+	</select-->
+	<input type="number" name="num" value="{{num}}" min='1' max='10'>
+</div>
+<br/>
+<br/>
+
+<div>
+	isp 比冲：
+	<input type="number" name="isp" value="{{isp}}">
+</div>
+<br>
+
+<div>
+	行星重力加速度：
+	<select name = 'planetg'>
+	<option value="9.81">Kerbin 9.81</option>
+	<option value="1.63">Mun 1.63</option>
+	<option value="0.49">Minmus 0.491</option>
+	<option value="2.94">Duna 2.94</option>
+	</select>
+</div>
+<br/>
+
+<div>
+	<input type="submit" name="submit">
+</div>
+
+</fieldset>
+</form>
+
+<p>{{ msg }}</p>
+
+<a href="{{url_for('showimg.image')}}">跳转图片</a>
+</body>
+</html>

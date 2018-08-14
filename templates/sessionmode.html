@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>session</title>
+<script src="http://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"></script>
+<script >
+$(document).ready(function(){
+$("#button").click(function() {
+	var username = $("#username").val();
+	if (username=='') {
+		alert("请输入用户");
+		return false;
+	}
+	$.post("/check",{username:username},function(data){
+		alert(data);
+	});
+	});
+$("#sub").click(function(){
+	var username = $("#username").val();
+	var checkcode = $("#checkcode").val();
+	if (username=='') {
+		alert("请输入用户");
+		return false;
+	}
+	if (checkcode=='') {
+		alert("请输入验证码");
+		return false;
+	}
+	$.post("login", {username:username,checkcode:checkcode}, function(data){
+		if (data=='checkfalse') {
+			alert("验证码错误");
+			return false;
+		}
+		else {
+			$("form").submit();
+		}
+		
+	});
+	
+});
+});
+</script>
+</head>
+<body>
+<form action="" method="post">
+    <p>user<input type="text" id="username" name="username" value={{ user }}>
+     <p>checkcode<input type="text" id="checkcode" name="checkcode">
+     <p><input type="button" id="button" name="getcode" value="getcode"></p>
+    <p><input type="button" id="sub" value=Login>
+</form>
+</body>
+</html>
